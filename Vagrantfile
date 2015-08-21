@@ -7,31 +7,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Use Ubuntu 14.04 Trusty Tahr 64-bit as our operating system
   config.vm.box = "ubuntu/trusty64"
 
-
- config.ssh.forward_agent = true
+  config.ssh.forward_agent = true
   config.ssh.forward_x11 = true
 
 
-  
   # Configurate the virtual machine to use 4GB of RAM
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--memory", "4096"]
     vb.gui = true
   end
-
-
-#  config.vm.provision "shell", inline: <<-SHELL
-#     sudo apt-get update
-#     sudo apt-get install --no-install-recommends ubuntu-desktop
-#   SHELL
-
- config.vm.provision "shell", inline: <<-SHELL
-    sudo apt-get update
-    sudo apt-get install -y ubuntu-desktop
-    sudo reboot
-  SHELL
-
-
 
   # Forward the Rails server default port to the host
   config.vm.network :forwarded_port, guest: 3000, host: 3000
@@ -69,4 +53,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       }
     }
   end
+
+
+#  install desktop GUI
+
+ config.vm.provision "shell", inline: <<-SHELL
+    sudo apt-get update
+    sudo apt-get install -y ubuntu-desktop
+  SHELL
+
+#reboot VM adfter desktop gui is installed
+ config.vm.provision :reload
+
 end
