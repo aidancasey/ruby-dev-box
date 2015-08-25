@@ -67,7 +67,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
  config.vm.provision "shell", inline: <<-SHELL
     sudo apt-get update
-    sudo apt-get install -y ubuntu-desktop
+ #   sudo apt-get install -y ubuntu-desktop
+     sudo apt-get install -y kde-desktop
     sudo apt-get install -y virtualbox-guest-dkms 
    sudo apt-get install -y virtualbox-guest-utils virtualbox-guest-x11
   SHELL
