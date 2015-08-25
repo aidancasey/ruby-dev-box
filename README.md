@@ -3,45 +3,25 @@
 A fully scripted ruby development environment in a fresh a virtual machine using vagrant & chef
 
 ## pre requisites
-1. Install Virtual Box
-2. Install Vagrant
+1. Install Virtual Box  (https://www.virtualbox.org/wiki/Downloads)
+
+2. Install Vagrant (http://www.vagrantup.com/downloads.html)
 
 
-3. Install vagrant-vbguest plugin
+3. Install Some Useful Vagrant plugins
 
-This  automatically installs the host's VirtualBox Guest Additions on the guest system.
+vagrant-vbguest plugin -it automatically installs the host's VirtualBox Guest Additions on the guest system.
+vagrant-librarian-chef -  let's you automatically run chef when we fire up your machine.
+vagrant-reload - let's you reboot your VM during provisioning, (this is needed as part of installing ubuntu-desktop...)
+
 ```javascript
+
 vagrant plugin install vagrant-vbguest
-```
-
-
-4. Install vagrant-librarian-chef plugin
-
-vagrant-librarian-chef let's us automatically run chef when we fire up our machine.
-```javascript
 vagrant plugin install vagrant-librarian-chef-nochef
-```
-
-
-5. Install vagrant-reload plugin
-
-vagrant-reload lets you reboot your VM during provisioning, this is needed as part of installing ubuntu-desktop...
-
-```javascript
 vagrant plugin install vagrant-reload
+
 ```
-
-
-6.  Install vagrant-reload plugin
-This plugin  automatically installs the host's VirtualBox Guest Additions on the guest system.
-
-```javascript
-vagrant plugin install vagrant-vbguest
-```
-
-
-
-## to make yourself a  a fresh virtual machine
+## Now, to make yourself a  fresh virtual machine
 - to create a fresh machine and ssh into it :
 ```javascript
 vagrant up
