@@ -4,11 +4,19 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  # Use Ubuntu 14.04 Trusty Tahr 64-bit as our operating system
-  config.vm.box = "ubuntu/trusty64"
+  # Use Ubuntu  A standard Ubuntu 12.04 LTS 32-bit as our operating system
+  config.vm.box = "hashicorp/precise32"
 
   config.ssh.forward_agent = true
   config.ssh.forward_x11 = true
+
+  #config.vm.synced_folder ".", "/vagrant", type: "smb"
+
+
+ config.vbguest.auto_update = false
+
+  # do NOT download the iso file from a webserver
+  config.vbguest.no_remote = true
 
 
   # Configurate the virtual machine to use 4GB of RAM
@@ -60,6 +68,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
  config.vm.provision "shell", inline: <<-SHELL
     sudo apt-get update
     sudo apt-get install -y ubuntu-desktop
+    sudo apt-get install -y virtualbox-guest-dkms 
+   sudo apt-get install -y virtualbox-guest-utils virtualbox-guest-x11
   SHELL
 
 #reboot VM adfter desktop gui is installed

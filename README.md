@@ -1,4 +1,5 @@
 # ruby-dev-box
+
 A fully scripted ruby development environment in a fresh a virtual machine using vagrant & chef
 
 ## pre requisites
@@ -29,6 +30,16 @@ vagrant-reload lets you reboot your VM during provisioning, this is needed as pa
 ```javascript
 vagrant plugin install vagrant-reload
 ```
+
+
+6.  Install vagrant-reload plugin
+This plugin  automatically installs the host's VirtualBox Guest Additions on the guest system.
+
+```javascript
+vagrant plugin install vagrant-vbguest
+```
+
+
 
 ## to make yourself a  a fresh virtual machine
 - to create a fresh machine and ssh into it :
