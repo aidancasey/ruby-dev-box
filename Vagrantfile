@@ -30,7 +30,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Use Chef Solo to provision our virtual machine
   config.vm.provision :chef_solo do |chef|
-    chef.cookbooks_path = ["cookbooks", "site-cookbooks"]
+    chef.cookbooks_path = ["cookbooks"]
 
     chef.add_recipe "apt"
     chef.add_recipe "nodejs"
@@ -38,8 +38,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe "rbenv::user"
     chef.add_recipe "rbenv::vagrant"
     chef.add_recipe "vim"
-    chef.add_recipe "mysql::server"
-    chef.add_recipe "mysql::client"
+    chef.add_recipe "java"
+    chef.add_recipe "ruby_rvm"
+
+
 
     # Install Ruby 2.2.1 and Bundler
     # Set an empty root password for MySQL to make things simple
@@ -67,8 +69,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
  config.vm.provision "shell", inline: <<-SHELL
     sudo apt-get update
- #   sudo apt-get install -y ubuntu-desktop
-     sudo apt-get install -y kde-desktop
+    sudo apt-get install -y ubuntu-desktop
+ #    sudo apt-get install -y kde-full
     sudo apt-get install -y virtualbox-guest-dkms 
    sudo apt-get install -y virtualbox-guest-utils virtualbox-guest-x11
   SHELL
