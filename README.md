@@ -40,6 +40,3 @@ If you ever edit your Vagrantfile or Cheffile, you can use the following command
 ```javascript
 vagrant provision
 ```
-
-# to do list
-(1) Automatically add RubyMine to the fresh VM
